@@ -8,14 +8,8 @@ class AwsRdsHelper < Formula
   sha256 "432b48abe05429bbde29408c9cafddff5b693b587872a91c18a9faea59a29e59"
   license ""
 
-  def install
-    # ENV.deparallelize
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
-    # system "cmake", ".", *std_cmake_args
-    system "make", "install"
+   def install
+       bin.install 'main'
       
   end
 end
