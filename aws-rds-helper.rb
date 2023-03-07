@@ -12,7 +12,4 @@ class AwsRdsHelper < Formula
       bin.install "main"
     
   end
-
-  
-  end
 end
