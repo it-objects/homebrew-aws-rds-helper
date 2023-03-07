@@ -9,7 +9,13 @@ class AwsRdsHelper < Formula
   license ""
 
   def install
-      bin.install "main"
-    
+    # ENV.deparallelize
+    system "./configure", "--disable-debug",
+                          "--disable-dependency-tracking",
+                          "--disable-silent-rules",
+                          "--prefix=#{prefix}"
+    # system "cmake", ".", *std_cmake_args
+    system "make", "install"
+      
   end
 end
