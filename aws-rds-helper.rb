@@ -9,7 +9,7 @@ class AwsRdsHelper < Formula
   license ""
 
    def install
-       bin.install 'main'
+       bin.install "main"
       
   end
 end
