@@ -1,0 +1,25 @@
+name: Homebrew Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Homebrew
+        run: |
+          brew update
+          brew install --build-from-source --force-bottle {{homebrew-aws-rds-helper}}
+
+      - name: Test formula
+        run: brew test {{homebrew-aws-rds-helper}}
+
+      - name: Publish formula
+        run: brew audit --strict --online {{homebrew-aws-rds-helper}}
