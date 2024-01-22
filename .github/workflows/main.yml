@@ -21,8 +21,8 @@ jobs:
 
       - name: Create Tap
         run: |
-          echo ${{GITHUBUSER}}
-          brew tap ${{GITHUBUSER}}/${{GITHUBREPO}}
+          echo $GITHUBUSER
+    # brew tap $GITHUBUSER/$GITHUBREPO
 
      # - name: Install Formula
       #  run: |
