@@ -20,7 +20,7 @@ jobs:
           eval "$(/opt/homebrew/bin/brew shellenv)"
 
       - name: Create Tap
-        run: brew tap ${{secrets.GITHUBUSER}}/it-objects/homebrew-aws-rds-helper
+        run: brew tap ${{secrets.GITHUBUSER}}/"it-objects/homebrew-aws-rds-helper"
 
      # - name: Install Formula
       #  run: 
