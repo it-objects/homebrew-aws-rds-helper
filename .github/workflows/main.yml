@@ -1,4 +1,4 @@
-name: Homebrew Deploy
+name: Publish Homebrew Tap
 
 on:
   push:
@@ -6,20 +6,23 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: macOS-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Homebrew
+      - name: Install Homebrew
         run: |
-          brew update
-          brew install --build-from-source --force-bottle {{homebrew-aws-rds-helper}}
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zshrc
+          eval "$(/opt/homebrew/bin/brew shellenv)"
 
-      - name: Test formula
-        run: brew test {{homebrew-aws-rds-helper}}
+      - name: Create Tap
+        run: |
+          brew tap ${{GITHUBUSER}}/${{GITHUBREPO}}
 
-      - name: Publish formula
-        run: brew audit --strict --online {{homebrew-aws-rds-helper}}
+     # - name: Install Formula
+      #  run: |
+       #   brew install {{your_formula_name}}
