@@ -20,10 +20,9 @@ jobs:
           eval "$(/opt/homebrew/bin/brew shellenv)"
 
       - name: Create Tap
-        run: |
-          echo "${{secrets.GITHUBUSER}}"
+        run: echo ${{secrets.GITHUBUSER}}
     # brew tap $GITHUBUSER/$GITHUBREPO
 
      # - name: Install Formula
-      #  run: |
+      #  run: 
        #   brew install {{your_formula_name}}
