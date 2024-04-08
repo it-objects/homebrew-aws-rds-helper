@@ -9,6 +9,6 @@ class AwsRdsHelper < Formula
   license ""
 
    def install
-       bin.install "awsrdshelper"    
+       bin.install "aws-rds-helper"    
    end
 end
